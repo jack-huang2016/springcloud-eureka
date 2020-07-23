@@ -1,0 +1,11 @@
+server:
+  port: 7000
+
+eureka:
+  instance:
+    hostname: cluster2.eureka.com  # 应用实例主机名
+  client:
+    service-url:
+      defaultZone: http://hyj:123456@cluster1.eureka.com:7001/eureka,http://hyj:123456@cluster3.eureka.com:6999/eureka  #注册中心的地址
+
+
