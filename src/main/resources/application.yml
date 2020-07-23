@@ -1,0 +1,20 @@
+eureka:
+  client:
+    register-with-eureka: false #由于该应用为注册中心, 所以设置为false, 代表不向注册中心注册自己
+    fetch-registry: false #由于注册中心的职责就是维护服务实例, 它并不需要去检索服务, 所以也设置为 false
+  server:
+    peer-node-read-timeout-ms: 60000 # 集群节点之间进行数据复制的读超时时间。单位：毫秒，默认200毫秒
+
+  # 为了在开发环境调试方便，能快速移除失效服务才配置如下2个属性，生产环境下不推荐成这样。
+#    enable-self-preservation: false # 关闭自我保护
+#    eviction-interval-timer-in-ms: 5000 # 用于eureka-server清理失效服务的间隔，默认 60000 毫秒，即1分钟
+
+spring:
+  application:
+    name: eureka-server-cluster  # Eureka集群
+  security:
+    user:
+      name: hyj # Eureka注册中心开启密码认证的 用户名
+      password: 123456 # Eureka注册中心开启密码认证的 密码
+  profiles:
+    active: master
